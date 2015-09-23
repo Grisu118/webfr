@@ -18,7 +18,9 @@ import ch.fhnw.webfr.flashcard.util.QuestionnaireInitializer;
 @SuppressWarnings("serial")
 public class BasicServlet extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request,
+    private QuestionnaireRepository questionnaireRepository;
+
+    protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=utf-8");
 
@@ -33,11 +35,13 @@ public class BasicServlet extends HttpServlet {
 	}
 
 	private boolean isLastPathElementQuestionnaires(String[] pathElements) {
+		if (pathElements.length == 0) return false;
 		String last = pathElements[pathElements.length-1];
 		return last.equals("questionnaires");
 	}
 
 	private boolean isLastPathElementNumber(String[] pathElements) {
+        if (pathElements.length == 0) return false;
         String last = pathElements[pathElements.length-1];
         try {
             Long.parseLong(last);
@@ -49,7 +53,7 @@ public class BasicServlet extends HttpServlet {
 
 	private void handleQuestionnairesRequest(HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-		List<Questionnaire> questionnaires = QuestionnaireRepository.getInstance().findAll();
+		List<Questionnaire> questionnaires = questionnaireRepository.findAll();
 		PrintWriter writer = response.getWriter();
 		writer.append("<html><head><title>Example</title></head><body>");
 		writer.append("<h3>Fragebögen</h3>");
@@ -74,7 +78,7 @@ public class BasicServlet extends HttpServlet {
     private void handleQuestion(HttpServletRequest request,
                                 HttpServletResponse response, String[] pathElements) throws IOException {
         PrintWriter writer = response.getWriter();
-        Questionnaire q = QuestionnaireRepository.getInstance().findById(Long.parseLong(pathElements[pathElements.length-1]));
+        Questionnaire q = questionnaireRepository.findById(Long.parseLong(pathElements[pathElements.length - 1]));
 
         writer.append("<html><head><title>" + q.getTitle() + "</title></head><body>");
         writer.append("<h3>" + q.getTitle() + "</h3>");
@@ -85,7 +89,7 @@ public class BasicServlet extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
-		QuestionnaireInitializer.createQuestionnaires();
+        questionnaireRepository = (QuestionnaireRepository) config.getServletContext().getAttribute("questionnaireRepository");
 	}
 
 }
