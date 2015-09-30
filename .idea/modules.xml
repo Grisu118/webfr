@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/basic/basic.iml" filepath="$PROJECT_DIR$/basic/basic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flashcard-mvc-war/flashcard-mvc-war.iml" filepath="$PROJECT_DIR$/flashcard-mvc-war/flashcard-mvc-war.iml" />
       <module fileurl="file://$PROJECT_DIR$/webfr.iml" filepath="$PROJECT_DIR$/webfr.iml" />
     </modules>
   </component>
