@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>hello world: thymeleaf example</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+          href="../../webapp/css/bootstrap.min.css" />
+</head>
+
+<body>
+<h2 th:text="${message}">Hello to Tester</h2>
+
+<div th:with="count=${questionnaires.size()}">
+    <div th:switch="${count}">
+        <span th:case="0">No questionnaire found.</span>
+        <span th:case="*">Found <span th:text="${count}">10</span> questionnaires.</span>
+    </div>
+</div>
+</body>
+
+</html>

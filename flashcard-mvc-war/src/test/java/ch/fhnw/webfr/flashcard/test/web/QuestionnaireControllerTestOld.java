@@ -36,7 +36,7 @@ import ch.fhnw.webfr.flashcard.test.web.TestUtil.QuestionnaireBuilder;
 // WebAppConfiguration triggers WebMvcConfigurationSupport which enables all the default handler-mappings and handler-adapters
 // needed for a spring mvc webapp
 @WebAppConfiguration  
-public class QuestionnaireControllerTest {
+public class QuestionnaireControllerTestOld {
 	private MockMvc mockMvc;
 	
 	@Autowired
@@ -95,7 +95,8 @@ public class QuestionnaireControllerTest {
                 .param("title", "MyTitle 1")
         )
        	.andExpect(status().is3xxRedirection())
-    	.andExpect(view().name("redirect:/questionnaires"));
+    	.andExpect(view().name("redirect:/questionnaires"))
+    	.andExpect(model().attributeExists("questionnaire"));
 
 	}
 }

@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>flashcard</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>flashcard</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../../webapp/css/bootstrap.min.css"/>
 </head>
 <body>
+<h1>Questionannaires</h1>
 
+<div th:each="q : ${questionnaires}">
+    <div>
+        [<span th:text="${q.id}">0</span>]
+        <strong th:text="${q.title}">title of Questionnaire 0</strong><br/>
+        <span th:text="${q.description}">description of Questionnaire 0</span>
+    </div>
+    <div th:remove="all">
+        [<span>1</span>]
+        <strong>title of Questionnaire 1</strong><br/>
+        <span>description of Questionnaire 1</span>
+    </div>
+</div>
 </body>
 </html>
