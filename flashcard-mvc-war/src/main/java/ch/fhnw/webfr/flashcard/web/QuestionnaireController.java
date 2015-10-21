@@ -19,7 +19,13 @@ public class QuestionnaireController {
 	public String findAll(Model model) {
 		model.addAttribute("questionnaire", new Questionnaire());
 		model.addAttribute("questionnaires", questionnaireRepository.findAll());
-		return "/questionnaires";
+		return "questionnaires/list";
+	}
+
+	@RequestMapping(params = "form", method = RequestMethod.GET)
+	public String createForm(Model model) {
+		model.addAttribute("questionnaire", new Questionnaire());
+		return "questionnaires/create";
 	}
 	
 	// Without any validation support from the framework!
