@@ -5,9 +5,11 @@
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/basic" />
+    <file type="web" url="file://$PROJECT_DIR$/flashcard-jsf" />
     <file type="web" url="file://$PROJECT_DIR$/flashcard-mvc-war" />
     <file type="web" url="file://$PROJECT_DIR$/LE05" />
     <file type="web" url="file://$PROJECT_DIR$/LE06" />
+    <file type="web" url="file://$PROJECT_DIR$/LE06_2" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
